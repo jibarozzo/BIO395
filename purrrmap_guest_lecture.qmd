@@ -63,26 +63,59 @@ Other, more complex vectors: *matrices*, *lists*, and *tibbles*.
 
 ## Vector Coercion
 
-Purpose: R automatically converts data types in vectors. Hierarchy: Logical → Integer → Double → Character. Example: Demonstrating coercion.
+R automatically converts data types in vectors. 
+
+Hierarchy: Logical → Integer → Double → Character.
 
 ```{r}
 mixed_vector <- c(TRUE, 2, "text")
 print(mixed_vector) # Coerces to character
 ```
 
-## Vector Indexing and Subsetting
+## Vector Coercion (cont.)
 
-Accessing elements: Single or multiple elements using \[\]. Named elements: Access using names. Example:
+Explicit coercion: as.double(), as.integer(), as.character(), as.logical(), etc.
 
 ```{r}
-vec <- c(alpha = 1, beta = 2, gamma = 3)
-vec["beta"]  # Accessing by name
-vec[c(1, 3)] # Accessing multiple elements
+as.character(c(1, 1.2, 1.23, 1.234))
 ```
 
-## Slide 6: Logical Indexing
+Note the quotation marks in the output confirm our coercion worked as expected.
 
-Definition: Subset vectors based on conditions. Example:
+## Checking for vector types
+
+Usefule functions:
+
+- `typeof()` determines the type of a vector
+- The `is.*()` functions (e.g. `is.character()`) test if a vector is of a specific type
+- The `as.*()` functions (e.g. `as.character()`) deliberately coerce a vector to a specific type
+
+## Vector Indexing and Subsetting
+
+Ways of accessing:
+
+- Single or multiple elements using `\[\]`. 
+- Access using names (named vectors).
+
+```{r}
+# Named vector
+vec <- c(alpha = 1, beta = 2, gamma = 3)
+vec["beta"]  # Accessing by name
+vec[c(1, 2)] # Accessing multiple elements
+
+# Unnamed vector
+unvec <- c("alpha", "beta", "gamma")
+unvec[2]
+unvec
+```
+
+::: {.callout-note}
+{{< fa brands r-project title="R logo" >}} is a one-indexed language, while {{< fa brands python >}} is a zero-indexed language.
+:::
+
+## Logical Indexing
+
+Subset vectors based on conditions.
 
 ```{r}
 
@@ -90,19 +123,35 @@ num_vec <- c(10, 15, 20, 25)
 num_vec[num_vec > 15]
 ```
 
-# Section 2: List Data Structures in R
+## Modifying in place
+```{r}
+vec <- c(1, 4, 9, 16, 25)
+vec
 
-## Slide 7: Introduction to Lists
+vec[1] <- 0
+vec
+```
 
-Definition: Lists are recursive vectors that can hold elements of different types. Examples: Lists within lists and different data types.
+::: {.callout-warning}
+This is a permanent change. You are in fact overwriting the value.
+:::
+
+# List Data Structures in R
+
+## Introduction to Lists
+
+Lists are recursive vectors that can hold elements of *different* types. 
+Examples: Lists within lists and different data types.
 
 ```{r}
 my_list <- list(num = 1, char = "text", vec = c(1, 2, 3))
+my_list
 ```
 
-## Slide 8: Accessing List Elements
+## Accessing List Elements
 
-Single vs. Double Brackets: \[ \] vs. \[\[ \]\]. Using \$ for named elements. Example:
+- Single vs. Double Brackets: `\[ \]` vs. `\[\[ \]\]`. 
+- Using `\$` for named elements.
 
 ```{r}
 my_list[["num"]]
