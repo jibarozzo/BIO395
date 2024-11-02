@@ -147,7 +147,7 @@ my_list <- list(num = 1, char = "text", vec = c(1, 2, 3))
 my_list
 ```
 
-## Accessing List Element
+## Accessing List Elements
 
 - Single vs. Double Brackets: `\[ \]` vs. `\[\[ \]\]`. 
 - Using `\$` for named elements.
