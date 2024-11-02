@@ -5,15 +5,14 @@ author: Bolívar Aponte Rolón
 date: "2024-11-08"
 format:
   revealjs:
+    #   - ../../meds-slides-styles.scss
     slide-number: true
     # code-link: true
     highlight-style: a11y
     chalkboard: true
     # theme: 
-    #   - ../../meds-slides-styles.scss
 editor_options: 
   chunk_output_type: console
-
 execute:
     echo: true
     eval: true
@@ -27,7 +26,7 @@ library(gapminder)
 
 ```
 
-# Introduction
+# Introductio
 
 ## Overview
 
