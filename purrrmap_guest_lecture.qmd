@@ -272,8 +272,8 @@ In to this *reusable* function:
 
 lm_ggplot <- function(data, .country, x, y) {
 data |>
-    filter(country == {{.country}} ) |>
-    ggplot(aes(x = {{x}}, y = {{y}})) +
+    filter(country == {{ .country }} ) |>
+    ggplot(aes(x = {{ x }}, y = {{ y }})) +
     geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 1) +
     geom_smooth(method = lm, se = T, level = 0.95, na.rm = F) +
     labs(title = .country)
@@ -306,31 +306,50 @@ lm_ggplot(gapminder, .country = "United States", x = year, y = lifeExp)
 ::::
 
 
-
-
 ## Using Parameters and Defaults
 
-Definition: Setting default values for arguments. Example:
+Setting default values for arguments.
 
 ```{r}
-plot_data <- function(x, y = NULL) {
-  if (!is.null(y)) plot(x, y)
-  else plot(x)
+#| echo: true
+#| eval: false
+lm_ggplot <- function(data, .country, x = year, y = lifeExp) {
+data |>
+    filter(country == {{ .country }} ) |>
+    ggplot(aes(x = {{ x }}, y = {{ y }})) +
+    geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 1) +
+    geom_smooth(method = lm, se = T, level = 0.95, na.rm = F) +
+    labs(title = .country)
 }
-
 ```
 
 
 
 
-# Practical Applications
+# Let's practice
+<div class="page-center vertical-center"> 
+<p class="custom-subtitle bottombr"> Writing functiions ins the *tidyverse*</p> 
+</div>
 
-## Trimming the excess ...
+
+## How would we write a function that:
+
+- creates a boxplot comparing the mean life expectancy between countries
+- Name it **`country_boxplot`**
+
+*Hint:*
+```{.r code-line-numbers="5"}
+country_boxplot <- function(data, .country, x = year, y = lifeExp) {
+data |>
+    <...>
+    ggplot(aes(x = {{ x }}, y = {{ y }})) +
+    <...>
+    labs(title = .country)
+}
+```
 
 
-## Let's write a function
 
-How would we write a function that creates a boxplot comparing the mean life expectancy between countries.
 
 
 
