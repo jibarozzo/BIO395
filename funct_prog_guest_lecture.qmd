@@ -442,6 +442,7 @@ data |>
 continent_boxplot(gapminder, x = continent, y = lifeExp)
 ```
 
+# Start here
 ## Introduction to `purrr`
 
 `purrr` provides a complete and consistent set of tools for working with functions and vectors.
