@@ -35,40 +35,37 @@ library(gapminder)
 
 -   Functional programming with `purrr`
 
--   Importance of writing clear, reusable code 
-
-
+-   Importance of writing clear, reusable code
 
 # Coding best practices
 
 ## It's easy to write bad code {.smaller}
 
-:::: {.columns}
+:::::: columns
+::: column
+-   Duplicate code
 
-::: {.column}
-- Duplicate code
+-   Data clumps
 
-- Data clumps
-
-- Intermediary objects and Duplicate identifiers
+-   Intermediary objects and Duplicate identifiers
 :::
 
-::: {.column}
+:::: column
 ::: {.fragment .semi-fade-out}
-- Comments (too many or too obvious)
+-   Comments (too many or too obvious)
 
-- Inconsistent naming and ambiguous names
+-   Inconsistent naming and ambiguous names
 
-- Absolute paths
+-   Absolute paths
 
-- Too much indentation
+-   Too much indentation
 
-- Lack of version control
-:::
+-   Lack of version control
 :::
 ::::
+::::::
 
-::: {.callout-tip}
+::: callout-tip
 Check out these resources:
 
 [Best Practices for Scientific Computing](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001745)
@@ -76,21 +73,21 @@ Check out these resources:
 [Code tips for developers](https://www.freecodecamp.org/news/how-to-write-clean-code-tips-for-developers/) more Java focused but still useful
 
 [External list of resources](https://bookdown.org/alapo/learnr/intro.html#list-of-resources)
-
 :::
 
-
 # {{< fa brands r-project title="R logo" >}} Vector Basics
+
 <!-- <div class="page-center vertical-center"> -->
+
 <!-- <p class="custom-subtitle bottombr">{{< fa brands r-project title="R logo" >}} Vector Basics?</p> -->
+
 <!-- </div> -->
 
 ## Atomic Vectors
 
-Simple data structures in R that hold elements of the same type. 
+Simple data structures in R that hold elements of the same type.
 
 Types: `logical`, `integer`, `double`, and `character`
-
 
 ```{r}
 numeric_vector <- c(1, 2, 3)
@@ -103,10 +100,9 @@ character_vector
 
 Other, more complex vectors: *matrices*, *lists*, and *tibbles*.
 
-
 ## Vector Coercion
 
-R automatically converts data types in vectors. 
+R automatically converts data types in vectors.
 
 Hierarchy: Logical → Integer → Double → Character.
 
@@ -129,16 +125,16 @@ Note the quotation marks in the output confirm our coercion worked as expected.
 
 Usefule functions:
 
-- `typeof()` determines the type of a vector
-- The `is.*()` functions (e.g. `is.character()`) test if a vector is of a specific type
-- The `as.*()` functions (e.g. `as.character()`) deliberately coerce a vector to a specific type
+-   `typeof()` determines the type of a vector
+-   The `is.*()` functions (e.g. `is.character()`) test if a vector is of a specific type
+-   The `as.*()` functions (e.g. `as.character()`) deliberately coerce a vector to a specific type
 
 ## Vector Indexing and Subsetting {.smaller}
 
 Ways of accessing:
 
-- Single or multiple elements using `\[\]`. 
-- Access using names (named vectors).
+-   Single or multiple elements using `\[\]`.
+-   Access using names (named vectors).
 
 ```{r}
 # Named vector
@@ -152,7 +148,7 @@ unvec[2]
 unvec
 ```
 
-::: {.callout-note}
+::: callout-note
 {{< fa brands r-project title="R logo" >}} is a one-indexed language, while {{< fa brands python >}} is a zero-indexed language.
 :::
 
@@ -167,6 +163,7 @@ num_vec[num_vec > 15]
 ```
 
 ## Modifying in place
+
 ```{r}
 vec <- c(1, 4, 9, 16, 25)
 vec
@@ -175,15 +172,15 @@ vec[1] <- 0
 vec
 ```
 
-::: {.callout-warning}
+::: callout-warning
 This is a permanent change. You are in fact overwriting the value.
 :::
 
-# *List* in {{< fa brands r-project title="R logo" >}}
+# *Lists* in {{< fa brands r-project title="R logo" >}}
 
 ## Introduction to Lists
 
-Lists are recursive vectors that can hold elements of *different* types. 
+Lists are recursive vectors that can hold elements of *different* types.
 
 Lists *within* lists and different data types.
 
@@ -194,93 +191,20 @@ my_list
 
 ## Accessing List Elements
 
-- Single vs. Double Brackets: `\[ \]` vs. `\[\[ \]\]`. 
-- Using `\$` for named elements.
+-   Single vs. Double Brackets: **\[ \]** vs. **\[\[ \]\]**.
+-   Using **\$** for named elements.
 
 ```{r}
 my_list[["num"]]
 my_list$vec
 ```
 
-# Coding best practices
-
-## It's easy to write bad code
-Characteristics of unsustainable code
-
-- Comments (too many or too obvious)
-- Inconsistent naming and ambiguous names
-- Duplicate code
-- Data clumps
-- Intermediary objects and Duplicate identifiers
-- Absolute paths
-- Too much indentation
-
-
-[Best Practices for Scientific Computing](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001745)
-
-[External list of resources](https://bookdown.org/alapo/learnr/intro.html#list-of-resources)
-
-## Commenting for Clarity
-
-Explain purpose, not syntax the *obvious*.
-
-- The *obvious* is something the code should do by itself.
-
-- To clarify decision making.
-
-- When working with complex algorithms or calculations.
-
-- To add notes about potential limitations.
-
-```{r}
-#| eval: false
-#| echo: true
-# Extracts the mean of each column in the data frame
-map(data, mean)
-
-# Selecting subset values for initial tests
-sub_tests <- data |>
-  select(column_a:column_b)
-```
-
-## N0 NaMing KonV3nz1on {.smaller}
-
-:::: {.columns}
-
-::: {.column width="65%"}
- Choose a style and be consistent
-
-**`snake_case`** is preferred for object names
-```{r}
-#| eval: false
-#| echo: true
-
-# Strive for:
-short_flights <- flights |> filter(air_time < 60)
-
-# Avoid:
-SHORTFLIGHTS <- flights |> filter(air_time < 60)
-```
-
-You can have conventions for different elements:
-
-- **Files**: underscore_separated, all lower case: e.g. *numeric_version*
-- **Functions**: period.separated, all lower case: e.g. *my.function*
-- **Variables**: lowerCamelCase: e.g. *addTaskCall*
-
-See the [*tidyverse* style guide](https://style.tidyverse.org/)
-:::
-
-::: {.column width="35%"}
-![](assets/programmerhumor-io-backend-memes.webp)
-:::
-::::
-
 # Functional Programming
 
-## Avoiding Code Duplication
+## Avoiding Code Duplication {.smaller}
 
 We can refactor repetitive code by creating functions
+
 ```{r}
 #| label: copy_plots
 #| echo: true
@@ -290,33 +214,63 @@ We can refactor repetitive code by creating functions
 
 # Afghanistan
 gapminder |>
-  filter(country == "Afghanistan" ) |>
-ggplot(aes(x = year, y = lifeExp)) +
+  filter(country == "Afghanistan") |>
+  ggplot(aes(x = year, y = lifeExp)) +
   geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 1) +
-  geom_smooth(method = lm, se = T, level = 0.95, na.rm = F) +
+  geom_smooth(
+    method = lm,
+    se = T,
+    level = 0.95,
+    na.rm = F
+  ) +
   labs(title = "Afghanistan")
 
 # United States
 gapminder |>
-  filter(country == "United States" ) |>
+  filter(country == "United States") |>
   ggplot(aes(x = year, y = lifeExp)) +
   geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 1) +
-  geom_smooth(method = lm, se = T, level = 0.95, na.rm = F) +
+  geom_smooth(
+    method = lm,
+    se = T,
+    level = 0.95,
+    na.rm = F
+  ) +
   labs(title = "United States")
 
 # United Kingdom
 gapminder |>
-  filter(country == "United Kingdom" ) |>
+  filter(country == "United Kingdom") |>
   ggplot(aes(x = year, y = lifeExp)) +
   geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 1) +
-  geom_smooth(method = lm, se = T, level = 0.95, na.rm = F) +
+  geom_smooth(
+    method = lm,
+    se = T,
+    level = 0.95,
+    na.rm = F
+  ) +
   labs(title = "United Kingdom")
 
+# India
+gapminder |>
+  filter(country == "India") |>
+  ggplot(aes(x = year, y = lifeExp)) +
+  geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 1) +
+  geom_smooth(
+    method = lm,
+    se = T,
+    level = 0.95,
+    na.rm = F
+  ) +
+  labs(title = "India")
 ```
 
+## Anatomy of a function
 
-## 
-In to this *reusable* function:
+![](assets/function_anatomy.png)
+
+## Our *reusable* function:
+
 ```{r}
 #| label: ggplot_function
 #| echo: true
@@ -333,31 +287,91 @@ data |>
 }
 ```
 
-## 
-Let's test our function
+## Testing our function {.smaller}
 
-:::: {.columns}
-
-::: {.column width="45%"}
 ```{r}
-#| label: test_afghanistan
+#| label: test_function
+#| layout: [[47,-5, 47], [47,-5, 47]]
 #| message: false
 
 lm_ggplot(gapminder, .country = "Afghanistan", x = year, y = lifeExp)
-```
-:::
-
-::: {.column width="45%"}
-```{r}
-#| label: test_usa
-#| message: false
-
 lm_ggplot(gapminder, .country = "United States", x = year, y = lifeExp)
+lm_ggplot(gapminder, .country = "United Kingdom", x = year, y = lifeExp)
+lm_ggplot(gapminder, .country = "India", x = year, y = lifeExp)
+```
+
+## Reduced code
+
+::::: columns
+::: column
+**Bad**
+
+``` r
+# Afghanistan
+gapminder |>
+  filter(country == "Afghanistan") |>
+  ggplot(aes(x = year, y = lifeExp)) +
+  geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 1) +
+  geom_smooth(
+    method = lm,
+    se = T,
+    level = 0.95,
+    na.rm = F
+  ) +
+  labs(title = "Afghanistan")
+
+# United States
+gapminder |>
+  filter(country == "United States") |>
+  ggplot(aes(x = year, y = lifeExp)) +
+  geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 1) +
+  geom_smooth(
+    method = lm,
+    se = T,
+    level = 0.95,
+    na.rm = F
+  ) +
+  labs(title = "United States")
+
+# United Kingdom
+gapminder |>
+  filter(country == "United Kingdom") |>
+  ggplot(aes(x = year, y = lifeExp)) +
+  geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 1) +
+  geom_smooth(
+    method = lm,
+    se = T,
+    level = 0.95,
+    na.rm = F
+  ) +
+  labs(title = "United Kingdom")
+
+# India
+gapminder |>
+  filter(country == "India") |>
+  ggplot(aes(x = year, y = lifeExp)) +
+  geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 1) +
+  geom_smooth(
+    method = lm,
+    se = T,
+    level = 0.95,
+    na.rm = F
+  ) +
+  labs(title = "India")
 ```
 :::
 
-::::
+::: column
+**Better**
 
+``` r
+lm_ggplot(gapminder, .country = "Afghanistan", x = year, y = lifeExp)
+lm_ggplot(gapminder, .country = "United States", x = year, y = lifeExp)
+lm_ggplot(gapminder, .country = "United Kingdom", x = year, y = lifeExp)
+lm_ggplot(gapminder, .country = "India", x = year, y = lifeExp)
+```
+:::
+:::::
 
 ## Using Parameters and Defaults
 
@@ -376,31 +390,57 @@ data |>
 }
 ```
 
-
-
-
 # Let's practice
-<div class="page-center vertical-center"> 
-<p class="custom-subtitle bottombr"> Writing functiions ins the *tidyverse*</p> 
-</div>
 
+::: {.page-center .vertical-center}
+<p class="custom-subtitle bottombr">
+
+Writing functions in the *tidyverse*
+
+</p>
+:::
 
 ## How would we write a function that:
 
-- creates a boxplot comparing the mean life expectancy between countries
-- Name it **`country_boxplot`**
+-   creates a boxplot comparing the mean life expectancy by *continent*
+-   name it **`country_boxplot`**
 
-*Hint:*
-```{.r code-line-numbers="5"}
-country_boxplot <- function(data, .country, x = year, y = lifeExp) {
+*Hint:* What's missing?
+
+``` {.r code-line-numbers="1,4-7"}
+country_boxplot <- function(data, x = ???, y = ???) {
+
 data |>
     <...>
-    ggplot(aes(x = {{ x }}, y = {{ y }})) +
+    ggplot(aes(x = {{ x }}, y = {{ y }}), ??? = {{ x }})) +
     <...>
-    labs(title = .country)
+    labs(title = ???)
 }
 ```
 
+
+## 
+
+It should look something like this:
+
+```{r}
+continent_boxplot <- function(data, x = continent, y = lifeExp) {
+data |>
+    group_by({{ x }}) |>
+    ggplot(aes(x = {{ x }}, y = {{ y }}, fill = {{ x }})) +
+    geom_boxplot() +
+    labs(title = "Life expectancy per continent")
+}
+```
+
+::: {.fragment}
+**Does it work?**
+:::
+
+## {auto-animate=true}
+```{r }
+continent_boxplot(gapminder, x = continent, y = lifeExp)
+```
 
 ## Introduction to `purrr`
 
@@ -408,27 +448,26 @@ data |>
 
 *Reduce duplicate code* by:
 
-- iterating over data structures
-- creating list objects with various data structures
+-   iterating over data structures
+-   creating list objects with various data structures
 
-![](assets/apple-touch-icon-152x152.png){.absolute bottom=0 right=10 width="300" height="300"}
+![](assets/apple-touch-icon-152x152.png){.absolute bottom="0" right="10" width="300" height="300"}
 
 ## `map()` Function
 
-Applies a function to each element of a list or vector.
-`map(v, .fun)`
+Applies a function to each element of a list or vector. `map(v, .fun)`
 
 ```{r}
 map(1:3, ~ .x ^ 2)
 ```
 
-![](assets/Pasted image 20240917112114.png)
+![](assets/Pasted%20image%2020240917112114.png)
 
 ## 
 
 `map()` can iterate over any type of vector, but always returns a list.
 
-```r
+``` r
 map(
   v, 
   .fun, 
@@ -443,28 +482,24 @@ Anonymous functions are functions without names, *typically* created in-line and
 
 The two expressions below are equivalent:
 
-```r
+``` r
 map(c(1, 2, 3), function(.x) {.x ^ 2})
 ```
 
-```r
+``` r
 map(c(1, 2, 3), \(.x) .x ^ 2)
 ```
-
 
 ## `map()` Variants
 
 Each atomic vector has it's own `map()` variant:
 
-|Function|Return type|
-|---|---|
-|`map_chr()`|character|
-|`map_dbl()`|double|
-|`map_int()`|integer|
-|`map_lgl()`|logical|
-
-
-
+| Function    | Return type |
+|-------------|-------------|
+| `map_chr()` | character   |
+| `map_dbl()` | double      |
+| `map_int()` | integer     |
+| `map_lgl()` | logical     |
 
 Using map_dbl() for numerical output.
 
@@ -496,8 +531,6 @@ Definition: walk() performs side effects, often for I/O operations. Example:
 ```{r}
 walk(1:3, ~ print(.x))
 ```
-
-
 
 ## Slide 19: Example - Applying map() for Data Transformation
 
