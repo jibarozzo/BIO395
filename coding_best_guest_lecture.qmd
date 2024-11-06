@@ -1,0 +1,142 @@
+---
+title: Vector Manipulation and Iteration in R
+subtitle: Understanding Vectors, Lists, and Purrr Package Functions
+author: Bolívar Aponte Rolón
+date: "2024-11-08"
+format:
+  revealjs:
+    #   - ../../meds-slides-styles.scss
+    slide-number: true
+    # code-link: true
+    highlight-style: a11y
+    chalkboard: true
+    # theme: 
+editor_options: 
+  chunk_output_type: console
+execute:
+    echo: true
+    eval: true
+---
+
+```{r}
+#| label: setup
+library(tidyverse)
+library(gapminder)
+
+```
+
+# Introduction
+
+
+# Coding best practices
+
+## It's easy to write bad code
+Characteristics of unsustainable code
+
+- Comments (too many or too obvious)
+- Inconsistent naming and ambiguous names
+- Duplicate code
+- Data clumps
+- Intermediary objects and Duplicate identifiers
+- Absolute paths
+- Too much indentation
+
+
+[Best Practices for Scientific Computing](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001745)
+
+[External list of resources](https://bookdown.org/alapo/learnr/intro.html#list-of-resources)
+
+## Commenting for Clarity
+
+Explain purpose, not syntax the *obvious*.
+
+- The *obvious* is something the code should do by itself.
+
+- To clarify decision making.
+
+- When working with complex algorithms or calculations.
+
+- To add notes about potential limitations.
+
+```{r}
+#| eval: false
+#| echo: true
+# Extracts the mean of each column in the data frame
+map(data, mean)
+
+# Selecting subset values for initial tests
+sub_tests <- data |>
+  select(column_a:column_b)
+```
+
+## N0 NaMing KonV3nz1on {.smaller}
+
+:::: {.columns}
+
+::: {.column width="65%"}
+ Choose a style and be consistent
+
+**`snake_case`** is preferred for object names
+```{r}
+#| eval: false
+#| echo: true
+
+# Strive for:
+short_flights <- flights |> filter(air_time < 60)
+
+# Avoid:
+SHORTFLIGHTS <- flights |> filter(air_time < 60)
+```
+
+You can have conventions for different elements:
+
+- **Files**: underscore_separated, all lower case: e.g. *numeric_version*
+- **Functions**: period.separated, all lower case: e.g. *my.function*
+- **Variables**: lowerCamelCase: e.g. *addTaskCall*
+
+See the [*tidyverse* style guide](https://style.tidyverse.org/)
+:::
+
+::: {.column width="35%"}
+![](assets/programmerhumor-io-backend-memes.webp)
+:::
+::::
+
+# Functional Programming
+
+## Avoiding Code Duplication
+
+We can refactor repetitive code by creating functions
+```{r}
+#| label: copy_plots
+#| echo: true
+#| eval: false
+#| warning: false
+#| message: false
+
+# Afghanistan
+gapminder |>
+  filter(country == "Afghanistan" ) |>
+ggplot(aes(x = year, y = lifeExp)) +
+  geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 1) +
+  geom_smooth(method = lm, se = T, level = 0.95, na.rm = F) +
+  labs(title = "Afghanistan")
+
+# United States
+gapminder |>
+  filter(country == "United States" ) |>
+  ggplot(aes(x = year, y = lifeExp)) +
+  geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 1) +
+  geom_smooth(method = lm, se = T, level = 0.95, na.rm = F) +
+  labs(title = "United States")
+
+# United Kingdom
+gapminder |>
+  filter(country == "United Kingdom" ) |>
+  ggplot(aes(x = year, y = lifeExp)) +
+  geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 1) +
+  geom_smooth(method = lm, se = T, level = 0.95, na.rm = F) +
+  labs(title = "United Kingdom")
+
+```
+
