@@ -1,6 +1,6 @@
 ---
-title: Vector Manipulation and Iteration in R
-subtitle: Understanding Vectors, Lists, and Purrr Package Functions
+title: "Functional Programming in R"
+subtitle: An Overview of Data Structures and `purrr` Package Functions
 author: Bolívar Aponte Rolón
 date: "2024-11-08"
 format:
@@ -10,7 +10,11 @@ format:
     # code-link: true
     highlight-style: a11y
     chalkboard: true
-    # theme: 
+    theme: 
+      - "assets/styling/custom.scss"
+      
+ 
+
 editor_options: 
   chunk_output_type: console
 execute:
@@ -20,12 +24,11 @@ execute:
 
 ```{r}
 #| label: setup
+#| echo: false
+
 library(tidyverse)
 library(gapminder)
-
 ```
-
-# Introduction
 
 ## Overview
 
@@ -133,7 +136,7 @@ Usefule functions:
 
 Ways of accessing:
 
--   Single or multiple elements using `\[\]`.
+-   Single or multiple elements using **\[ \]**.
 -   Access using names (named vectors).
 
 ```{r}
@@ -145,7 +148,7 @@ vec[c(1, 2)] # Accessing multiple elements
 # Unnamed vector
 unvec <- c("alpha", "beta", "gamma")
 unvec[2]
-unvec
+
 ```
 
 ::: callout-note
@@ -393,14 +396,14 @@ data |>
 # Let's practice
 
 ::: {.page-center .vertical-center}
-<p class="custom-subtitle bottombr">
+<p class="custom-subtitle bottom">
 
 Writing functions in the *tidyverse*
 
 </p>
 :::
 
-## How would we write a function that:
+## Write a function that:
 
 -   creates a boxplot comparing the mean life expectancy by *continent*
 -   name it **`country_boxplot`**
@@ -442,17 +445,18 @@ data |>
 continent_boxplot(gapminder, x = continent, y = lifeExp)
 ```
 
-# Start here
-## Introduction to `purrr`
 
-`purrr` provides a complete and consistent set of tools for working with functions and vectors.
+# Iterating with `purrr`
+## `purrr` Package
+
+Provides a complete and consistent set of tools for working with functions and vectors.
 
 *Reduce duplicate code* by:
 
 -   iterating over data structures
 -   creating list objects with various data structures
 
-![](assets/apple-touch-icon-152x152.png){.absolute bottom="0" right="10" width="300" height="300"}
+![](assets/apple-touch-icon-152x152.png){.absolute bottom="0" right="0" width="275" height="275"}
 
 ## `map()` Function
 
@@ -462,7 +466,7 @@ Applies a function to each element of a list or vector. `map(v, .fun)`
 map(1:3, ~ .x ^ 2)
 ```
 
-![](assets/Pasted%20image%2020240917112114.png)
+![](assets/Pasted%20image%2020240917112114.png){.absolute bottom="120" right="50"}
 
 ## 
 
@@ -481,7 +485,7 @@ map(
 
 Anonymous functions are functions without names, *typically* created in-line and used *only* once
 
-The two expressions below are equivalent:
+These are equivalent:
 
 ``` r
 map(c(1, 2, 3), function(.x) {.x ^ 2})
@@ -502,81 +506,266 @@ Each atomic vector has it's own `map()` variant:
 | `map_int()` | integer     |
 | `map_lgl()` | logical     |
 
-Using map_dbl() for numerical output.
+## `map_dbl()`
+
+ Output is a an atomic vector of integers *NOT* a list.
 
 ```{r}
 map_dbl(c(1.1, 2.5, 3.9), round)
 ```
 
+
+```{r}
+map(c(1.1, 2.5, 3.9), round)
+```
+
 ## Mapping Over Data Frames
 
-Using `map()` to iterate over data frame columns. Example:
+Using `map()` to iterate over data frame columns.
 
 ```{r}
 data <- data.frame(a = 1:5, b = 6:10)
 map(data, mean)
 ```
 
-## Slide 13: Applying Functions with map() and Additional Arguments
+## `map()` and Additional Arguments
 
-Explanation: Pass extra arguments to mapped function. Example:
+Pass extra arguments to mapped function.
 
 ```{r}
 map(c(10, 20, 30), runif, min = 0, max = 5)
 ```
 
-## Slide 14: walk() for Side Effects
+## `walk()` for "Side Effects"
 
-Definition: walk() performs side effects, often for I/O operations. Example:
+`walk()` performs an action instead of producing data (e.g.,` print()`). 
 
 ```{r}
 walk(1:3, ~ print(.x))
 ```
 
-## Slide 19: Example - Applying map() for Data Transformation
+## `map()` for Data Transformation
 
-Description: Using map() for transformations across columns. Example:
+Using map() for transformations within columns.
 
 ```{r}
 df <- data.frame(x = c(1, 2), y = c(3, 4))
 map(df, sqrt)
 ```
 
-## Slide 20: Example - walk() for File Operations
+## List Columns and Nested Data Frames
 
-Description: Using walk() to save multiple plots. Example:
-
-```{r}
-walk(names(iris)[1:4], ~ hist(iris[[.x]], main = .x))
-```
-
-## Slide 21: List Columns and Nested Data Frames
-
-Purpose: Store data frames or lists within columns for complex data structures. Example:
+Store data frames or lists within columns for complex data structures.
 
 ```{r}
-#| eval: false
-df <- tibble(group = c("A", "B"), data = list(data1, data2))
+# Dummy data frames
+data_a <- data.frame(value = c(1, 4, 5, 6),  sample = c("a", "b", "c", "d"))
+data_b <- data.frame(value = c(10, 13, 14, 21),  sample = c("f", "t", "y", "r"))
+
+# Data frame with data frames
+df <- tibble(group = c("data_a", "data_b"), data = list(data_a, data_b))
+df
 ```
 
-# Section 6: Conclusion and Best Practices
+## Accessing Nested DFs
 
-## Slide 22: Recap - Key Points on Vectors and Lists
+Just like atomic vectors, by indexing
 
-Summary: Types of vectors, coercion rules, and list usage.
+```{r}
+# data_a
+df[[2]][[1]]
 
-## Slide 23: Recap - Functional Programming with purrr
+# data_b
+df[[2]][[2]]
+```
 
-Summary: Benefits of map() and walk() for iteration and side effects.
+# Practice using `map()`
 
-## Slide 24: Recap - Coding Best Practices
+## Exercise 1
 
-Summary: Clarity, readability, and reusability in coding.
+- Use `map()` and `lm_ggplot` to produce a *list* of scatter plots for the countries below
 
-## Slide 25: Resources and Further Reading
+- Save it to an object called `plots`
 
-Books: R for Data Science, Advanced R Web Resources: purrr documentation, RStudio guides.
 
-## Slide 26: Q&A
+```{r}
+countries <- c("Afghanistan",
+               "United States",
+               "United Kingdom",
+               "China",
+               "India")
+```
 
-Closing Slide: Thank attendees and open for questions.
+::: {.fragment}
+```{r}
+plots <- map(countries,
+             \(.x) lm_ggplot(
+               data = gapminder,
+               .country = .x,
+               x = year,
+               y = lifeExp
+             ))
+```
+:::
+
+## Reducing our code more
+
+
+:::: {.columns}
+::: {.column}
+**Bad**
+
+``` r
+# Afghanistan
+gapminder |>
+  filter(country == "Afghanistan") |>
+  ggplot(aes(x = year, y = lifeExp)) +
+  geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 1) +
+  geom_smooth(
+    method = lm,
+    se = T,
+    level = 0.95,
+    na.rm = F
+  ) +
+  labs(title = "Afghanistan")
+
+# United States
+gapminder |>
+  filter(country == "United States") |>
+  ggplot(aes(x = year, y = lifeExp)) +
+  geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 1) +
+  geom_smooth(
+    method = lm,
+    se = T,
+    level = 0.95,
+    na.rm = F
+  ) +
+  labs(title = "United States")
+
+# United Kingdom
+gapminder |>
+  filter(country == "United Kingdom") |>
+  ggplot(aes(x = year, y = lifeExp)) +
+  geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 1) +
+  geom_smooth(
+    method = lm,
+    se = T,
+    level = 0.95,
+    na.rm = F
+  ) +
+  labs(title = "United Kingdom")
+
+# India
+gapminder |>
+  filter(country == "India") |>
+  ggplot(aes(x = year, y = lifeExp)) +
+  geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 1) +
+  geom_smooth(
+    method = lm,
+    se = T,
+    level = 0.95,
+    na.rm = F
+  ) +
+  labs(title = "India")
+```
+:::
+
+::: {.column}
+**Better**
+
+``` r
+lm_ggplot(gapminder, .country = "Afghanistan", x = year, y = lifeExp)
+lm_ggplot(gapminder, .country = "United States", x = year, y = lifeExp)
+lm_ggplot(gapminder, .country = "United Kingdom", x = year, y = lifeExp)
+lm_ggplot(gapminder, .country = "India", x = year, y = lifeExp)
+```
+:::
+::::
+
+
+## Reducing our code more (*cont.*)
+
+**Best**
+```r
+map(countries,
+             \(.x) lm_ggplot(
+               data = gapminder,
+               .country = .x,
+               x = year,
+               y = lifeExp
+             ))
+```
+
+
+
+## Exercise 2 {.smaller}
+
+Use `walk2()` to save your *ggplots*:
+
+Setting up where to save them
+```r
+# make the folder to put them it (if exists, {fs} does nothing)
+fs::dir_create("plots")
+
+# make the file names
+plot_paths <- str_glue("plots/{print(countries)}.png")
+```
+::: {.callout-tip}
+Usage of `::` helps to access the exact function from that specific package. This avoids conflicts with other packages.
+:::
+
+::: {.callout-note}
+Check out the [*fs*](https://fs.r-lib.org/index.html) and [*glue*](https://glue.tidyverse.org/) packages for more information on the functions we used above.
+:::
+
+## Exercise 2 (*cont.*)
+
+```r
+walk2(
+  plot_paths,
+  plots,
+  \(path, plot) ggsave(path, plot, width = 6, height = 6)
+)
+```
+
+Let's check if they are saved:
+
+```{r}
+fs::dir_tree("plots")
+```
+
+## Conclusion and Best Practices
+
+Functions allow us to automate tasks while avoiding code repetition
+
+- Three main components: the function **name**, **body**, and **arguments**.
+
+R uses vectors which can be subset several ways:
+
+- `[`, always returns a smaller list (e.g., a column)
+- `[[`, extracts a single element (e.g., cell value)
+- `$`, a shorthand for `[[` when the elements of a list are named
+
+Iterating with `map()` can:
+
+- greatly reduce code repetition
+- increase maintainability
+
+
+
+
+
+
+
+
+- The list-column workflow section of the [purrr cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/purrr.pdf)
+
+## Resources and Further Reading
+
+- [R for Data Science](https://r4ds.had.co.nz/)
+- [Gapminder vignette](https://cran.r-project.org/web/packages/gapminder/vignettes/gapminder.html)
+- [Code Smells and Feels](https://github.com/jennybc/code-smells-and-feels)
+- [Efficiency and Consistency: Automate Subset Graphics with ggplot2 and purrr](https://www.cedricscherer.com/2023/07/05/efficiency-and-consistency-automate-subset-graphics-with-ggplot2-and-purrr/)
+- [`purrr::walk()` this way](https://www.tidyverse.org/blog/2023/05/purrr-walk-this-way/)
+
+
