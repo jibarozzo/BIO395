@@ -1,0 +1,126 @@
+---
+title: "Using `map` and `walk` from the `purrr` package"
+author: Bolívar Aponte Rolón, Ph.D.
+date: "2024-11-08"
+
+format: 
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 2
+    number-sections: true
+    number-depth: 1
+    theme: lumen
+    highlight-style: github
+    code-overflow: wrap
+    code-fold: false
+    code-copy: true
+    code-link: true
+    code-tools: false
+    code-block-border-left: "#0C3823"
+    code-block-bg: "#eeeeee"
+    fig-cap-location: margin
+    linestretch: 1.25
+    fontsize: "large"
+    embed-resources: true
+
+editor_options: 
+  chunk_output_type: console
+  
+execute:
+    echo: true
+    eval: false
+---
+
+## Setup
+
+```{r}
+#| label: setup
+
+
+library(tidyverse)
+library(gapminder)
+```
+
+
+## Exercise 1
+
+- Use `map()` and `lm_ggplot` to produce a *list* of scatter plots for the countries below
+
+- Save it to an object called `plots`
+
+
+```{r}
+countries <- c("Afghanistan",
+               "United States",
+               "United Kingdom",
+               "China",
+               "India")
+```
+
+
+```{r}
+# Fill in the missing parts to save the plots
+
+____ <- map(countries,
+             \(.x) ______(
+               data = _____,
+               ______,
+               x = year,
+               y = ______
+             ))
+```
+
+
+## Exercise 2
+
+Use `walk2()` to save your *ggplots*:
+
+Setting up where to save them
+```{r}
+# make the folder to put them it (if exists, {fs} does nothing)
+fs::dir_create("plots")
+
+# make the file names
+plot_paths <- str_glue("plots/{print(countries)}.png")
+```
+
+::: {.callout-tip}
+Usage of `::` helps to access the exact function from that specific package. This avoids conflicts with other packages.
+:::
+
+::: {.callout-note}
+Check out the [*fs*](https://fs.r-lib.org/index.html) and [*glue*](https://glue.tidyverse.org/) packages for more information on the functions we used above.
+:::
+
+You can check the documentation on the [`purrr`](https://purrr.tidyverse.org/) package for further details
+
+```{r}
+#| eval: false
+
+# Fill in the missing parts to save the plots
+walk2(
+  ______,
+  ______,
+  \(path, plot) ______
+)
+```
+
+Let's check if they are saved:
+
+```{r}
+#| eval: true
+fs::dir_tree("plots")
+```
+
+
+## Resources and Further Reading
+
+- [R for Data Science](https://r4ds.had.co.nz/)
+- [Functional Programming in R](https://dcl-prog.stanford.edu/)
+- [Advanced R](https://adv-r.hadley.nz/index.html)
+- [Gapminder vignette](https://cran.r-project.org/web/packages/gapminder/vignettes/gapminder.html)
+- [Code Smells and Feels](https://github.com/jennybc/code-smells-and-feels)
+- [Efficiency and Consistency: Automate Subset Graphics with ggplot2 and purrr](https://www.cedricscherer.com/2023/07/05/efficiency-and-consistency-automate-subset-graphics-with-ggplot2-and-purrr/)
+- [`purrr::walk()` this way](https://www.tidyverse.org/blog/2023/05/purrr-walk-this-way/)
+- [Functional Programming in R](https://dcl-prog.stanford.edu/)

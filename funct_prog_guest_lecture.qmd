@@ -1,14 +1,17 @@
 ---
 title: "Functional Programming in R"
 subtitle: An Overview of Data Structures and `purrr` Package Functions
-author: Bolívar Aponte Rolón
+author: Bolívar Aponte Rolón, Ph.D.
 date: "2024-11-08"
 format:
   revealjs:
     #   - ../../meds-slides-styles.scss
+    footer: "Functional Programming in R | Grinnell College"
     slide-number: true
-    # code-link: true
-    highlight-style: a11y
+    code-link: true
+    code-block-border-left: "#0C3823"
+    code-block-bg: "#eeeeee"
+    highlight-style: github
     chalkboard: true
     theme: 
       - "assets/styling/custom.scss"
@@ -114,15 +117,17 @@ mixed_vector <- c(TRUE, 2, "text")
 print(mixed_vector) # Coerces to character
 ```
 
-## Vector Coercion (cont.)
+## Vector Coercion *cont.*
 
-Explicit coercion: as.double(), as.integer(), as.character(), as.logical(), etc.
+Explicit coercion: `as.double()`, `as.integer()`, `as.character()`, `as.logical()`, etc.
 
 ```{r}
 as.character(c(1, 1.2, 1.23, 1.234))
 ```
 
+::: {.callout-warning}
 Note the quotation marks in the output confirm our coercion worked as expected.
+:::
 
 ## Checking for vector types
 
@@ -203,6 +208,10 @@ my_list$vec
 ```
 
 # Functional Programming
+
+## What is functional programming?
+
+*Declarative programming paradigm style where one applies pure functions in sequence to solve complex problems*
 
 ## Avoiding Code Duplication {.smaller}
 
@@ -683,7 +692,7 @@ lm_ggplot(gapminder, .country = "India", x = year, y = lifeExp)
 ::::
 
 
-## Reducing our code more (*cont.*)
+## Reducing our code more *cont.*
 
 **Best**
 ```r
@@ -718,7 +727,7 @@ Usage of `::` helps to access the exact function from that specific package. Thi
 Check out the [*fs*](https://fs.r-lib.org/index.html) and [*glue*](https://glue.tidyverse.org/) packages for more information on the functions we used above.
 :::
 
-## Exercise 2 (*cont.*)
+## Exercise 2 *cont.*
 
 ```r
 walk2(
@@ -734,7 +743,7 @@ Let's check if they are saved:
 fs::dir_tree("plots")
 ```
 
-## Conclusion and Best Practices
+## Conclusion and Best Practices {.smaller}
 
 Functions allow us to automate tasks while avoiding code repetition
 
@@ -763,9 +772,12 @@ Iterating with `map()` can:
 ## Resources and Further Reading
 
 - [R for Data Science](https://r4ds.had.co.nz/)
+- [Functional Programming in R](https://dcl-prog.stanford.edu/)
+- [Advanced R](https://adv-r.hadley.nz/index.html)
 - [Gapminder vignette](https://cran.r-project.org/web/packages/gapminder/vignettes/gapminder.html)
 - [Code Smells and Feels](https://github.com/jennybc/code-smells-and-feels)
 - [Efficiency and Consistency: Automate Subset Graphics with ggplot2 and purrr](https://www.cedricscherer.com/2023/07/05/efficiency-and-consistency-automate-subset-graphics-with-ggplot2-and-purrr/)
 - [`purrr::walk()` this way](https://www.tidyverse.org/blog/2023/05/purrr-walk-this-way/)
+- [Functional Programming in R](https://dcl-prog.stanford.edu/)
 
-
+# Thank you!

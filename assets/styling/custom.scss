@@ -1,0 +1,38 @@
+/*-- scss:defaults --*/
+
+// fonts
+
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fira+Mono&family=Domine:wght@400;700;900&family=Nunito:wght@400;900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+// Define font-family variables
+// stylelint-disable-next-line value-keyword-case
+$font-family-sans-serif: "Nunito Sans", "Red Hat Text", "Source Sans Pro", -apple-system,
+                         BlinkMacSystemFont, "Segoe UI", Roboto,
+                         "Helvetica Neue", Arial, sans-serif,
+                         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+$font-family-monospace: "Dank Mono", SFMono-Regular, Menlo, Monaco, Consolas,
+                        "Liberation Mono", "Courier New", monospace;
+
+//$font-family-sans-serif: "Nunito Sans", "Open Sans";
+
+// colors
+$body-color: #000000;
+$tabset-border-color: #000000;
+$presentation-heading-color: #000000;
+
+
+// headings
+$presentation-heading-font: $font-family-sans-serif;
+
+/*-- scss:rules --*/
+
+// make logo slightly bigger
+.reveal .slide-logo {
+  max-height: 5rem !important;
+}
