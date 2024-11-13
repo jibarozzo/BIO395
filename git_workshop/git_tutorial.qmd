@@ -8,15 +8,11 @@ csl: apa.csl
 
 execute:
   echo: true
-  keep-md: true
+  keep-md: false
 editor: 
   markdown: 
     wrap: 72
 ---
-
-```{r setup, eval=FALSE}
-
-```
 
 ## Objective
 
@@ -65,8 +61,9 @@ distribution.
 
 Check whether Git is installed with the command:
 
-`git --version`
-
+```bash
+git --version
+```
 -   **In MacOS** it should automatically prompt you to install Git if it
     is not available. See
     [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
@@ -79,7 +76,9 @@ these commands to install Git:
 
 1.  Open your terminal and install Git using Homebrew:
 
-`brew install git`
+```bash
+brew install git
+```
 
 2.  Verify the installation was successful by typing `git --version`
 
@@ -89,7 +88,9 @@ You should see the most recent version installed.
 
 1.  Open up the terminal (shell) and install git with the command:
 
-`sudo apt install git-all`
+```bash
+sudo apt install git-all
+```
 
 2.  Verify the installation was successful by typing `git --version`
 
@@ -126,10 +127,11 @@ so. We will be using it in the next part of the tutorial and in Part 2.
 
 To set your account details in git:
 
-`git config --global user.name "Your GitHub username"`
+```bash
+git config --global user.name "Your GitHub username"
 
-`git config --global user.email "Your GitHub account email"`
-
+git config --global user.email "Your GitHub account email"
+```
 Git can also operate independently of GitHub, or with other hosting
 options such as [BitBucket](https://bitbucket.org/) or
 [GitLab](https://about.gitlab.com/).
@@ -141,32 +143,35 @@ this environment. I recommend using nano for those that are new to the
 command line, but Vim provides a more robust experience for those that
 are open to learning a new tool.
 
-`git config --global core.editor "nano -w"`
+```bash
+git config --global core.editor "nano -w"
 
-`git config --global core.editor "vim"`
-
+git config --global core.editor "vim"
+```
 You can check your configuration with the command:\
 
-`git config --list`
-
+```bash
+git config --list
+```
 ## Your first repository
 
 A repository is where Git saves the old versions of our files. We make
-repositories inside of the directory that we are working in. **Let's
-start by making a new working directory**. I will provide command line
+repositories inside of the directory that we are working in. **Let's start by making a new working directory**. I will provide command line
 code for those that are new to working this way.
 
-`mkdir twerc_git`
+```bash
+mkdir sandbox
 
-`cd twerc_git`
+cd sandbox
+```
 
 With these commands, we have made a "GitTut" directory to work in, and
 then navigated into the directory with the "cd" command. Now that we are
-in our working directory, we **create a Git repository with the
-command**:
+in our working directory, we **create a Git repository with the command**:
 
-`git init`
-
+```bash
+git init
+```
 ::: callout-note
 <font size="4"> You should see text in parenthesis (e.g. "(Main)") at
 the end of the path to your working directory. If not, we have to
@@ -175,8 +180,9 @@ configure "global' options for the repository. See below.
 
 Now let's create a test file.
 
-`touch test.md`
-
+```bash
+touch test.md
+```
 The `touch` command creates the file. This command creates a new text
 file "test.md" that can be opened with the text editor of your choice,
 either at the command line or with a GUI based editor like Word or
@@ -184,13 +190,20 @@ Notepad.
 
 Let's see our new repository in the directory, use the command:
 
-`ls -a`
+```bash
+ls -a
+```
+::: {.callout-warning}
+Some of the images referenced in this document refer to the `~/TWERC/twerc_git`. This is an old reference. In 2024, they do **not** reside in the current `~/BIO395/git_workshop/` path. Please be aware of this distinction following this tutorial. We are now using `sandbox` directory.
+:::
 
-You will see an output like this:\
+You will see an output like this:
 
-![Figure 1. Newly created file](images/output1.PNG)
+![Figure 1. Newly created file](images/output1.png)
 
 See the `test.md` file we just created.
+
+
 
 The `.git` directory indicates that a repository has been created for
 your working directory. All sub-directories within your working
@@ -198,12 +211,12 @@ directory will also be backed up in this repository as long as you the
 Git to track them.
 
 We can also **check the project status** with the command:
-
-`git status`
-
+```bash
+git status
+```
 You will see this output:\
 
-![Figure 2. Untracked "test" file.](images/output2.PNG)
+![Figure 2. Untracked "test" file.](images/output2.png)
 
 In this example, `git status` prompted and error message after detection
 of a "dubious" ownership (Figure 2). Copy and paste into the command
@@ -219,7 +232,7 @@ screen often.
 ## Tracking file changes
 
 Now we are on to the bread and butter of using Git. Make sure that you
-are still in your "twerc_git" directory before proceeding. You can check
+are still in your "sandbox" directory before proceeding. You can check
 your current directory with the command `pwd`. This is important because
 ewe don't want to start a repository in the wrong directory or our
 computer's root directory.
@@ -227,34 +240,40 @@ computer's root directory.
 We already created a file called `test.md`. Now let's modify it with
 `nano`:
 
-`nano test.md`
-
+```bash
+nano test.md
+```
 Enter some text into the file, then exit `nano` with `Ctrl + x`. Nano
 will automatically prompt you to save when exiting.
 
 We can **track a new file** with the command:
 
-`git add test.md`
+```bash
+git add test.md
+```
 
 Let's again **check the project status**:
 
-`git status`
+```bash
+git status
+```
 
 Let's check the project status:
 
-![Figure 3. Status of "test' file after staging.](images/output3.PNG)
+![Figure 3. Status of "test' file after staging.](images/output3.png)
 
 ::: callout-tip
 You can start tracking your file from the start or at any point in your
 project's history. Git does not track files unless you tell it. If you
 want all the files in a directory to be tracked, you can type:
 
-`git add .`
+```bash
+git add .
 
-or
+# or
 
-`git add -all`
-
+git add -all
+```
 This last command will track all files in the repository directory,
 including hidden files.
 :::
@@ -276,8 +295,9 @@ Let's try.
 
 We can **commit our changes** with the command:
 
-`git commit -m "ADD A DESCRIPTION HERE"`
-
+```bash
+git commit -m "ADD A DESCRIPTION HERE"
+```
 The "descriptive message" is created by the argument `-m`, short for
 "message". It should be a short and clear statement about the changes
 that were made, so that it's easy to identify the changes associated
@@ -293,8 +313,9 @@ repository is now current with the status of your directory.
 
 To **see a log of the commits we've made**, we can use the command:
 
-`git log`
-
+```bash
+git log
+```
 The output of this command will show you who made the commit, when the
 commit was made, the branch it occured in, and the descriptive message
 you entered when you made the commit. It contains the `checksum`
@@ -311,46 +332,50 @@ and close it.
 To **view the changes** between the edits you've made and what was saved
 in your last commit, use the command:
 
-`git diff`
-
+```bash
+git diff
+```
 Look at the output of this command and understand where it's showing you
 what has been removed and what has been added. The previous version
 (marked a/test.md) and the current version (b/test.md). Additions to the
 file are indicated with a "+" and deletions with a "-" at the beginning
 of the line [@computing_for_biologists].
 
-![Figure 5. Output of \`git diff\`](images/output5.PNG)
+![Figure 5. Output of \`git diff\`](images/output5.png)
 
 Let's commit this change before moving on:\
 
-`git add test.md`\
+```bash
+git add test.md \
 
-`git commit -m "DESCRIPTIVE MESSAGE"`\
+git commit -m "DESCRIPTIVE MESSAGE" \
 
-`git status`
-
+git status
+```
 #### Let's Practice
 
 We can **control what files in our directory are added to any given
 commit** with selective use of the add function. Let's make a new file
 to see how this works:
 
-`touch new_test.md`
-
+```bash
+touch new_test.md
+```
 Now edit the text in both the first and second text files and save your
 changes.
 
 Add each file to the staging area and commit them.
 
-`git add test.md new_test.md`
-
+```bash
+git add test.md new_test.md
+```
 Once you've done this, check your `git status` to see that your working
 directory is synced with your most recent commit, and use `git log` to
 see all of the changes you've done so far.
 
 Your output should look something like this:
 
-![Figure 6. Full commit list.](images/output6.PNG)
+![Figure 6. Full commit list.](images/output6.png)
 
 ## Amending an Incomplete Commit
 
@@ -362,12 +387,13 @@ options: 1) ammend our commit, 2) "unstage" our file
 
 We can add the modified file or file that we had forgotten by running:
 
-`git add forgottenfile.txt`
+```bash
+git add forgottenfile.txt
 
-`git add fixedcode.R`
+git add fixedcode.R
 
-`git commit --amend`
-
+git commit --amend
+```
 This will include your files in the previous commit. Of course, you can
 always just do a new commit with the files you missed but this creates
 many small commits that can be annoying.
@@ -379,12 +405,13 @@ or commiting the changes made. Git provide helpful suggestions on how to
 do this. When working in a local repository we can check with
 `git status` and it will look like this:
 
-![Figure 7. Git suggestion on how to unstage files](images/output7.PNG)
+![Figure 7. Git suggestion on how to unstage files](images/output7.png)
 
 Run command:
 
-`git restore --staged <file>`
-
+```bash
+git restore --staged <file>
+```
 ## Comparing commits and returning to old commits
 
 Each commit in your git log has a unique commit ID. We can use these IDs
@@ -392,8 +419,9 @@ to **compare the changes that have been made between commits**. Let's
 try this now. Copy the commit number of your first commit and then use
 this command:
 
-`git diff commit #`
-
+```bash
+git diff commit #
+```
 You will get an extended log of what we saw previously with the `diff`
 command, showing all of the changes that have been made since the first
 commit.
@@ -404,12 +432,14 @@ desired version of a file** with the checkout command.
 
 To restore to the last commit, run:
 
-`git checkout test.md`
-
+```bash
+git checkout test.md
+```
 If you need to restore to a specific commit version, run:
 
-`git checkout commit# test.md`
-
+```bash
+git checkout commit# test.md
+```
 **Remember that "commit#" just refers to the commit number given when
 you run `git log`.**
 
@@ -446,15 +476,16 @@ repository to participate and contribute. Let's do that now!
 Go to the GitHub repository for today's lesson:\
 <https://github.com/jibarozzo/BIO395.git>
 
-![Figure 8. BIO395 Repo](images/bio395_repo.PNG)
+![Figure 8. BIO395 Repo](images/bio395_repo.png)
 
 You want to **clone this repository** to your computer. Navigate to the
-`twerc_git` directory we created before or one above it (Wherever you
+`sandbox` directory we created before or one above it (Wherever you
 feel like cloning a repository). Copy the HTTPS address given on the
 webpage or type it in manually in the command line.
 
-`git clone https://github.com/jibarozzo/BIO395.git`
-
+```bash
+git clone https://github.com/jibarozzo/BIO395.git
+```
 Now navigate into this new directory. Let's use `ls -a` and `git status`
 to check that this directory has a git repository associated with it. We
 should see a `.git` file.
@@ -463,8 +494,9 @@ How does this local repository communicate with GitHub? It uses a
 remote, which links it to the GitHub repo. We **can see what remotes are
 associated with a repo** with the command:
 
-`git remote -v`
-
+```bash
+git remote -v
+```
 This shows us the name of the remote and where it is addressed to.
 Remotes tell Git where to "push" and "pull" from.
 
@@ -473,7 +505,9 @@ Remotes tell Git where to "push" and "pull" from.
 your global configurations. Follow Git's prompt suggestions that should
 go somewhat like this:
 
-`git config --global --add safe.directory <PATH/TO/REPO>`
+```bash
+git config --global --add safe.directory <PATH/TO/REPO>
+```
 :::
 
 ::: {.callout-note}
@@ -516,7 +550,7 @@ git push origin master
 (e.g. main, default, etc.).
 :::
 
-::: {callout-warning}
+::: {.callout-warning}
 ## Using a Personal Access Token (PAT) with Git on the Command Line
 
 Git now requires a Personal Access Token (PAT) instead of your traditional password for authentication. This enhances security by providing a more secure method for accessing your repositories.
@@ -525,6 +559,7 @@ Git now requires a Personal Access Token (PAT) instead of your traditional passw
 
 When prompted, enter your GitHub username.
 Instead of your password, enter your Personal Access Token:
+
 ```bash
 Username: YOUR-USERNAME
 Password: YOUR-PERSONAL-ACCESS-TOKEN
@@ -534,9 +569,126 @@ Password: YOUR-PERSONAL-ACCESS-TOKEN
 
 If your repository uses an SSH URL, you’ll need to change it to HTTPS to use a PAT:
 
+```bash
 git remote set-url origin https://github.com/USERNAME/REPO.git
+```
 :::
 
+### RStudio and `.Rproj` Integration with Git
+
+Managing your Git repositories directly within RStudio can streamline your workflow by keeping everything in one integrated development environment (IDE). This approach minimizes the need to switch between multiple applications, making version control more user-friendly and efficient.
+
+Below are two common scenarios:
+1. **Creating a New `.Rproj` with Git Integration**
+2. **Connecting an Existing Directory and Git Repository to an `.Rproj`**
+
+---
+
+#### **1. Creating a New `.Rproj` with Git Integration**
+
+This example demonstrates how to create a new R project that is linked to a Git repository from the start.
+
+**Steps:**
+
+1. **Open RStudio**
+
+   Launch RStudio on your computer.
+
+2. **Create a New Project**
+
+   - Click on the **R-In-Blue-Box** icon located in the upper right corner of RStudio.
+   - From the dropdown menu, select **New Project**.
+
+   ![Figure 9. RStudio: Creating a New Project](images/new_rproj.png)
+
+3. **Choose Project Type**
+
+   - In the **New Project Wizard**, select **New Directory**.
+   - Then choose **New Project**.
+   
+   ![Figure 10. New RStudio Project](images/new_rproj2.png)
+
+4. **Set Project Details**
+
+   - **Directory Name:** Enter a name for your project.
+   - **Create Project:** Ensure this option is checked to initialize Git for the project.
+   - **Location:** Choose the folder where you want to save your project.
+   
+   ![Figure 11. New RStudio Project with Git](images/new_rproj3.png)
+
+5. **Create the Project**
+
+   Click **Create Project**. RStudio will set up a new `.Rproj` file and initialize a Git repository in the specified directory.
+
+6. **Verify Git Integration**
+
+   Your RStudio window should now display Git-related tabs and options, allowing you to commit, push, and pull changes directly from the IDE.
+
+   ![Figure 12. New RStudio Project with Git](images/new_rproj4.png)   
+
+---
+
+#### **2. Connecting an Existing Directory and Git Repository to an `.Rproj`**
+
+This example shows how to link an existing Git repository to a new R project.
+
+**Steps:**
+
+1. **Open RStudio**
+
+   Launch RStudio on your computer.
+
+2. **Create a New Project from Existing Directory**
+
+   - Click on the **R-In-Blue-Box** icon in the upper right corner.
+   - Select **New Project** from the dropdown menu.
+
+3. **Choose Project Type**
+
+   - In the **New Project Wizard**, select **Existing Directory**.
+
+4. **Select the Existing Repository**
+
+   - Click **Browse** and navigate to the directory that contains your existing Git repository.
+   - Ensure that this directory is already initialized as a Git repository (i.e., it contains a `.git` folder).
+
+5. **Set Project Name**
+
+   - Enter a name for your project or keep the default name based on the repository.
+
+6. **Create the Project**
+
+   Click **Create Project**. RStudio will open the project and recognize the existing Git repository, displaying Git options in the IDE.
+
+   ![Figure 13. RStudio: Connecting to Existing Git Repository](images/rstudio3.png)
+
+7. **Verify Git Integration**
+
+   Your RStudio window should now display Git-related tabs and options, allowing you to manage version control seamlessly within the IDE.
+
+   ![Figure 14. RStudio Git Integration](images/rstudio4.png)
+
+---
+
+### **Using Git within RStudio**
+
+Once your project is linked to Git, you can perform various version control operations directly from RStudio:
+
+- **Commit Changes:**
+  - Navigate to the **Git** tab in the upper right pane.
+  - Select the files you want to commit.
+  - Click **Commit**, write a commit message, and then click **Commit** again.
+
+  ![Figure 15. Committing Changes in RStudio](images/rstudio5.png)
+
+- **Push and Pull:**
+  - After committing, use the **Push** button to upload your changes to the remote repository.
+  - Use the **Pull** button to fetch and integrate changes from the remote repository.
+
+- **View History:**
+  - Click on **History** in the Git tab to view the commit history and track changes over time.
+
+  ![Figure 16. Viewing Commit History in RStudio](images/rstudio6.png)
 
 
 ## GitHub Desktop
@@ -557,7 +709,7 @@ interact with file explorer.
 
 If we haven't made any changes the set up should look like this:
 
-![Figure 9. GitHub Desktop workspace](images/github1.PNG)
+![Figure 17. GitHub Desktop workspace](images/github1.png)
 
 The work space is divided in a left file panel where you can see the
 files in the repository and write a commit message. On the right hand
@@ -574,7 +726,7 @@ deletions) to it.
 5.  Under **Local Path**, select where you want to clone the repository
     to.
 
-![Figure 10. GitHub Desktop Clone repo window](images/github2.PNG)
+![Figure 18. GitHub Desktop Clone repo window](images/github2.png)
 
 ### GitHub Desktop Workflow
 
@@ -585,7 +737,7 @@ the previous section. Before starting any changes you "pull" (or
 changes, commit and "push" your changes. Now you have a visual aid to
 understand the commands!
 
-![Figure 11. GitHub Desktop header](images/github3.PNG)
+![Figure 19. GitHub Desktop header](images/github3.png)
 
 #### Staging and commiting files
 
@@ -599,45 +751,13 @@ click **Commit to main** (or any other branch name).
 Git hub Desktop will tell you that no uncommitted changes are detected
 in the repository and prompt you to "push" to origin.
 
-![Figure 12. Push to origin in GitHub Desktop](images/github3.PNG)
+![Figure 20. Push to origin in GitHub Desktop](images/github3.png)
 
 If the remote is set up correctly (it should because we cloned it!) it
 will push our changes and our collaborator can see.
 
-### R Studio and Rproj
 
-We can continue to make changes and pull and push changes via the CLI or GitHub Desktop, but We can link our repository to R Studio via and R Project. This potentially minimizes windows and applications open and it can all be done from one integrated development environment (IDE). It's more user friendly! 
-
-Steps
-
-1.    Open **R Studio**
-2.    Create a **.Rproj** file by going to the upper right corner and selecting the R-in-blue-box icon.
-3.    From the drop down menu, select **New Project**
-
-![Figure 13. R Studio: Creating a new .Rproj ](images/rstudio1.PNG)
-
-4.    Because we are working with an existing repository, select **Existing Directory** from the *New Project Wizard* window. 
-
-5.    Similar to GitHub Desktop, browse and add the repository path.
-6.    Click **Create Project**
-
-Your work space will take a couple of seconds to load the new project. It should have the same name as your repository. You can always change it later, if you prefer! 
-
-Now your R Studio window should looks like this (notice circled in red):
-
-![Figure 14. New feature in R Studio window](images/rstudio4.PNG)
-
-These are some of the changes you will see when working in an `.Rproj`. You will have multiple ways of pulling, commiting and pushing your changes all while working from your R Studio. 
-
-![Figure 15. The options are endless](images/rstudio5.PNG)
-
-
-Once you have made all your changes, select **commit** from any of the tabs and you will see this window:
-
-![Figure 16. Another commit window](images/rstudio6.PNG)
-
-
-Folow the same workflow as explained before and you will be a version control master!
+---
 
 That's probably all we're getting through today! If we have time I can show you how conflicts between commits are resolved and how to initialize your own remotes. Thanks for coming!
 

@@ -1,0 +1,98 @@
+---
+title: "Zotero citations in RMarkdown"
+author: "Bolívar Aponte Rolón, PhD"
+date: 2023-11-13
+date-modified: today
+
+bibliography: references.bib
+#bibliography: references.yaml 
+
+csl: apa.csl # Citation Style Language
+---
+
+## Introduction[^1]
+
+[^1]: This tutorial was created with the support of ChatGPT o1-mini to ensure clarity and comprehensiveness in presenting the materials.
+
+Managing citations effectively is crucial for any research project. While there are numerous citation management tools available, Zotero stands out for its ease of use and powerful features. Zotero is a free, open-source citation management tool that helps you collect, organize, cite, and share research sources. We will walk you through integrating your Zotero library with R Markdown using BibTeX files, enabling citation management in your reports, papers, and presentations.
+
+------------------------------------------------------------------------
+
+## Install Zotero
+
+1.  **Download Zotero:**
+    -   Visit the [Zotero Download Page](https://www.zotero.org/download/) and download the appropriate version for your operating system (Windows, macOS, or Linux).
+2.  **Install Zotero:**
+    -   Follow the installation instructions specific to your OS to install Zotero on your computer.
+3.  **Set Up Zotero (optional):**
+    -   Open Zotero and create an account or sign in if you already have one. This allows you to sync your library across multiple devices.
+
+------------------------------------------------------------------------
+
+## Add Better BibTeX to Zotero
+
+Better BibTeX is an essential add-on for Zotero that enhances BibTeX export functionality, making it ideal for integration with R Markdown.
+
+1.  **Download Better BibTeX:**
+    -   Go to the [Better BibTeX for Zotero GitHub Releases](https://github.com/retorquere/zotero-better-bibtex/releases/tag/v6.7.251) page.
+    -   Download the latest `.xpi` file (e.g., `better-bibtex-6.7.251.xpi`).
+2.  **Install Better BibTeX in Zotero:**
+    -   Open Zotero.
+    -   Click on the **Tools** menu and select **Add-ons**.
+    -   In the Add-ons Manager, click the gear icon ⚙️ and choose **Install Add-on From File…**.
+    -   Navigate to the downloaded `.xpi` file and select it.
+    -   Click **Install Now** and follow any prompts to complete the installation.
+    -   Restart Zotero if prompted.
+
+------------------------------------------------------------------------
+
+## Configure Better BibTeX
+
+1.  **Access Better BibTeX Preferences:**
+    -   In Zotero, go to **Edit** (Windows/Linux) or **Zotero** (macOS) \> **Preferences**.
+    -   Click on the **Better BibTeX** tab.
+2.  **Set Up Citation Key Generation:**
+    -   Under the **Citation Keys** section, you can customize how citation keys are generated. The default settings work well for most users, but feel free to adjust them to match your preferred citation style.
+3.  **Enable Automatic Export:**
+    -   Navigate to the **Automatic Export** section.
+    -   Check the box for **Automatic Export** to enable real-time syncing of your Zotero library with your BibTeX file.
+
+------------------------------------------------------------------------
+
+## Export Your Zotero Library as BibTeX
+
+1.  **Create a BibTeX File:**
+    -   In Zotero, select the collection or library you want to export.
+    -   Right-click on the selection and choose **Export Collection…** or **Export Library…**.
+2.  **Choose Export Format:**
+    -   In the export dialog, select **Better BibTeX** as the format.
+    -   Ensure that **Keep updated** is checked if you want the BibTeX file to automatically update with your Zotero library.
+3.  **Save the BibTeX File:**
+    -   Choose a location on your computer to save the `.bib` file (e.g., `references.bib`).
+    -   Click **OK** to complete the export.
+
+------------------------------------------------------------------------
+
+## Integrate BibTeX with R Markdown
+
+1.  **Create or Open an R Markdown Document:**
+    -   In RStudio, create a new R Markdown file or open an existing one.
+2.  **Specify the Bibliography in YAML Header:**
+    -   At the top of your R Markdown document, add the path to your BibTeX file in the YAML header.
+
+``` yaml
+   ---
+   title: "Your Document Title"
+   author: "Your Name"
+   output: html_document
+   bibliography: references.bib
+   ---
+```
+
+## Inserting Citations in Text
+
+You can insert citation by writing `@braga2023` to get @braga2023 or `[braga2023]` for [@braga2023].
+
+## References/bibliography section
+
+At the end of your documents all citations used are rendered under a `References` section.
