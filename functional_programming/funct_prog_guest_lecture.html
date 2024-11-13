@@ -59,44 +59,44 @@
         -khtml-user-select: none; -moz-user-select: none;
         -ms-user-select: none; user-select: none;
         padding: 0 4px; width: 4em;
+        color: #aaaaaa;
       }
-    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
     div.sourceCode
-      { color: #24292e;  }
+      { color: #003b4f; background-color: #f1f3f5; }
     @media screen {
     pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
     }
-    code span { color: #24292e; } /* Normal */
-    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
-    code span.an { color: #6a737d; } /* Annotation */
-    code span.at { color: #d73a49; } /* Attribute */
-    code span.bn { color: #005cc5; } /* BaseN */
-    code span.bu { color: #d73a49; } /* BuiltIn */
-    code span.cf { color: #d73a49; } /* ControlFlow */
-    code span.ch { color: #032f62; } /* Char */
-    code span.cn { color: #005cc5; } /* Constant */
-    code span.co { color: #6a737d; } /* Comment */
-    code span.cv { color: #6a737d; } /* CommentVar */
-    code span.do { color: #6a737d; } /* Documentation */
-    code span.dt { color: #d73a49; } /* DataType */
-    code span.dv { color: #005cc5; } /* DecVal */
-    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
-    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
-    code span.fl { color: #005cc5; } /* Float */
-    code span.fu { color: #6f42c1; } /* Function */
-    code span.im { color: #032f62; } /* Import */
-    code span.in { color: #6a737d; } /* Information */
-    code span.kw { color: #d73a49; } /* Keyword */
-    code span.op { color: #24292e; } /* Operator */
-    code span.ot { color: #6f42c1; } /* Other */
-    code span.pp { color: #d73a49; } /* Preprocessor */
-    code span.re { color: #6a737d; } /* RegionMarker */
-    code span.sc { color: #005cc5; } /* SpecialChar */
-    code span.ss { color: #032f62; } /* SpecialString */
-    code span.st { color: #032f62; } /* String */
-    code span.va { color: #e36209; } /* Variable */
-    code span.vs { color: #032f62; } /* VerbatimString */
-    code span.wa { color: #ff5555; } /* Warning */
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="funct_prog_guest_lecture_files/libs/revealjs/dist/theme/quarto.css">
   <link href="funct_prog_guest_lecture_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -1016,21 +1016,20 @@ $b
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href=""></a><span class="fu">map</span>(<span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>), runif, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
- [1] 3.826916 3.518301 4.226910 2.613251 2.996485 2.700879 3.522436 3.303522
- [9] 4.542508 1.920356
+ [1] 4.7429036 1.0977198 3.5417623 1.2791422 0.1647822 2.2317399 2.3053571
+ [8] 2.0593548 2.9580180 1.8402854
 
 [[2]]
- [1] 0.56215506 4.47094295 0.36963260 2.26431234 2.38335254 1.95808415
- [7] 1.24675105 4.15219950 2.86818961 2.66433732 0.52832849 0.31910249
-[13] 2.70102815 4.21767712 2.06545822 0.07074605 0.53061199 0.56833303
-[19] 1.23149219 4.80743442
+ [1] 3.8170966 0.1252668 1.8881098 0.2202564 1.1812364 2.1638676 1.9969770
+ [8] 4.8492464 2.3716271 0.2114875 0.8960240 0.4798623 2.4061537 4.4586561
+[15] 4.4217810 2.8771494 2.7444976 2.0232311 4.8181120 0.6341744
 
 [[3]]
- [1] 4.8762492 4.9146340 3.7801025 1.3924288 2.8773523 4.8607975 4.8816834
- [8] 3.0472031 0.6487790 2.9091206 2.7435675 4.8407466 2.7876062 4.2385445
-[15] 0.2584400 1.9358167 3.6996913 1.5732705 0.3550131 4.2403492 2.4610369
-[22] 3.1683963 2.2503751 1.3733698 0.7170141 3.5265142 2.5169554 4.2252491
-[29] 0.2289890 3.0520217</code></pre>
+ [1] 0.84368458 2.55210223 4.54690560 4.15684624 3.88295379 3.20374635
+ [7] 2.94755814 1.26362340 2.75716327 0.77333402 0.06930017 3.39189262
+[13] 1.06521285 0.64985653 0.09106814 0.48265939 1.66755612 0.13812365
+[19] 3.44551512 4.71020694 4.66058526 4.21571460 2.77998231 4.54401148
+[25] 4.52632300 0.93774393 1.13096105 0.90245284 1.25867012 1.37840275</code></pre>
 </div>
 </div>
 </section>

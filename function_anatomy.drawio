@@ -1,0 +1,52 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36" version="24.8.4">
+  <diagram name="Page-1" id="cMU8qxdcKswTL1N-XEL_">
+    <mxGraphModel dx="1434" dy="1831" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="aeyl9fLwC4-bAvKsRsWM-17" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;curved=0;strokeWidth=2;strokeColor=#808080;dashed=1;" parent="1" source="aeyl9fLwC4-bAvKsRsWM-1" target="aeyl9fLwC4-bAvKsRsWM-5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aeyl9fLwC4-bAvKsRsWM-1" value="&lt;p style=&quot;&quot;&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Fira+Code&quot; face=&quot;Fira Code&quot;&gt;&lt;font style=&quot;&quot; color=&quot;#ff3333&quot;&gt;name&lt;/font&gt; &amp;lt;- function (&lt;font color=&quot;#3399ff&quot;&gt;args&lt;/font&gt;) {&lt;br&gt;&lt;/font&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Fira+Code&quot; face=&quot;Fira Code&quot; color=&quot;#009900&quot;&gt;statement 1&lt;br&gt;&lt;/font&gt;&lt;font face=&quot;Fira Code&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Fira+Code&quot; color=&quot;#009900&quot;&gt;statement 2&lt;br&gt;&lt;/font&gt;&lt;font color=&quot;#009900&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Fira+Code&quot; face=&quot;Fira Code&quot;&gt;...&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;&quot;&gt;&lt;font face=&quot;Fira Code&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Fira+Code&quot; face=&quot;Fira Code&quot;&gt;return(&lt;font style=&quot;&quot; color=&quot;#6666ff&quot;&gt;value&lt;/font&gt;)&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Fira+Code&quot; face=&quot;Fira Code&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;}&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=top;align=center;dashed=1;" parent="1" vertex="1">
+          <mxGeometry x="120" y="-820" width="423.75" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="aeyl9fLwC4-bAvKsRsWM-4" value="&lt;font color=&quot;#ff3333&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Lato&quot; face=&quot;Lato&quot;&gt;&lt;i&gt;&lt;b&gt;Function name&lt;/b&gt;&lt;/i&gt;&lt;/font&gt;&lt;div&gt;&lt;font face=&quot;Lato&quot;&gt;Identifier by which a function is called&lt;/font&gt;&lt;/div&gt;" style="shape=partialRectangle;whiteSpace=wrap;html=1;top=0;left=0;fillColor=none;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="20" y="-894" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="aeyl9fLwC4-bAvKsRsWM-5" value="&lt;i&gt;&lt;b&gt;&lt;font color=&quot;#3399ff&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Lato&quot; face=&quot;Lato&quot;&gt;Arguments&lt;/font&gt;&lt;/b&gt;&lt;/i&gt;&lt;div&gt;&lt;div&gt;&lt;font face=&quot;Lato&quot;&gt;List of values to be passed to function [e.g., (a, b)]&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=partialRectangle;whiteSpace=wrap;html=1;top=0;left=0;fillColor=none;direction=west;flipH=0;flipV=1;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="520" y="-904" width="170" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="aeyl9fLwC4-bAvKsRsWM-6" value="&lt;font color=&quot;#6666ff&quot; face=&quot;Lato&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Lato&quot;&gt;&lt;b style=&quot;&quot;&gt;&lt;i style=&quot;&quot;&gt;Return value&lt;/i&gt;&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Lato&quot; face=&quot;Lato&quot;&gt;End function call and returns end value to the program&lt;/font&gt;&lt;font face=&quot;LhC2iTFw5mPC1nZTYGXE&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;/div&gt;" style="shape=partialRectangle;whiteSpace=wrap;html=1;top=0;left=0;fillColor=none;direction=west;flipH=0;flipV=1;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="450" y="-544" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="aeyl9fLwC4-bAvKsRsWM-18" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=1;endSize=8;startSize=8;strokeWidth=2;strokeColor=#808080;dashed=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" target="aeyl9fLwC4-bAvKsRsWM-4" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="180" y="-820" as="sourcePoint" />
+            <mxPoint x="150" y="-920" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="180" y="-864" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aeyl9fLwC4-bAvKsRsWM-19" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=1;endSize=8;startSize=8;exitX=0.613;exitY=0.993;exitDx=0;exitDy=0;exitPerimeter=0;strokeWidth=2;strokeColor=#808080;dashed=1;" parent="1" target="aeyl9fLwC4-bAvKsRsWM-6" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="377.7587500000002" y="-585.6799999999998" as="sourcePoint" />
+            <mxPoint x="447.9999999999998" y="-514" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="378" y="-514" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aeyl9fLwC4-bAvKsRsWM-7" value="&lt;b&gt;&lt;i&gt;&lt;font color=&quot;#009900&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Lato&quot; face=&quot;Lato&quot;&gt;Body&lt;/font&gt;&lt;/i&gt;&lt;/b&gt;&lt;div&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Lato&quot; face=&quot;Lato&quot;&gt;Code executed each time the function is called&lt;/font&gt;&lt;/div&gt;" style="shape=partialRectangle;whiteSpace=wrap;html=1;top=0;left=0;fillColor=none;direction=west;flipH=0;flipV=1;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="596.25" y="-732" width="153.75" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="aeyl9fLwC4-bAvKsRsWM-15" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;flipH=1;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;strokeColor=#808080;fillColor=none;fillStyle=solid;strokeWidth=2;dashed=1;" parent="1" vertex="1">
+          <mxGeometry x="450" y="-747" width="60" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="aeyl9fLwC4-bAvKsRsWM-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitPerimeter=0;strokeWidth=2;strokeColor=#808080;dashed=1;" parent="1" source="aeyl9fLwC4-bAvKsRsWM-15" target="aeyl9fLwC4-bAvKsRsWM-7" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

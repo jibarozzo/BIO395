@@ -1,5 +1,25 @@
 project:
   title: "Guest_lecture"
 
-editor: visual
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 2
+    number-sections: true
+    number-depth: 1
+    theme: lumen
+    highlight-style: github
+    code-overflow: wrap
+    code-fold: false
+    code-copy: true
+    code-link: false
+    code-tools: false
+    code-block-border-left: "#0C3823"
+    code-block-bg: "#eeeeee"
+    fig-cap-location: margin
+    linestretch: 1.25
+    fontsize: "large"
+    embed-resources: true
 
+editor: source

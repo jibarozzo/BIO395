@@ -8,16 +8,10 @@ format:
     #   - ../../meds-slides-styles.scss
     footer: "Functional Programming in R | Grinnell College"
     slide-number: true
-    code-link: true
-    code-block-border-left: "#0C3823"
-    code-block-bg: "#eeeeee"
-    highlight-style: github
     chalkboard: true
     theme: 
-      - "assets/styling/custom.scss"
-      
- 
-
+      - "../assets/styling/custom.scss"
+    
 editor_options: 
   chunk_output_type: console
 execute:
